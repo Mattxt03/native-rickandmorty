@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ApiResponse, CharacterModel } from "../models/Character"
+import { ApiResponse, CharacterModel } from "../models/CharacterTypes"
 import { EpisodeApiRes } from "../models/Episode";
 import { LocationApiRes } from "../models/Location";
 
@@ -7,6 +7,7 @@ export const rickAndMortyApi = createApi({
     baseQuery: fetchBaseQuery({
       baseUrl: "https://rickandmortyapi.com/api/",
     }),
+    tagTypes: ["Character"],
     endpoints: (build) => ({
       getCharacters: build.query<ApiResponse, number>({
         query: (page: number) => `character?page=${page}`
