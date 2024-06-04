@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { FavChar } from '../models/CharacterTypes'; // Adjust the path as necessary
-import { addFavoriteCharacter } from '@/redux/favoritesSlice';
+import { FavChar } from '../models/CharacterTypes';
+import { addFavoriteCharacter, removeFavoriteChar } from '@/redux/favoritesSlice';
 
-const useHandleFavs = () => {
+const useAddFavorite = () => {
   const dispatch = useDispatch();
 
   const handleAddCharToFav = (character: FavChar) => {
@@ -14,4 +14,4 @@ const useHandleFavs = () => {
   };
 };
 
-export default useHandleFavs;
+export default useAddFavorite;
