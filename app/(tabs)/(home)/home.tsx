@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { FlatList, GestureHandlerRootView, TextInput } from 'react-native-gesture-handler';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import CharacterList from '@/components/Characterlist/CharacterList';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useGetCharactersQuery } from '@/redux/ramApi';
@@ -8,7 +8,7 @@ import { useGetCharactersQuery } from '@/redux/ramApi';
 const HomeScreen = () => {
     
     const [page, setPage] = useState(1)
-    const {data, error, isLoading} = useGetCharactersQuery(page);
+    const {data} = useGetCharactersQuery(page);
 
     if (!data) return (
       <SafeAreaView>
@@ -20,9 +20,8 @@ const HomeScreen = () => {
   
   return (
     <GestureHandlerRootView>
-    <SafeAreaView style={{flex: 1}}>
-        <View className='bg-blue-400'>
-          <View className='flex-row mt-4 items-center justify-center'>
+    <SafeAreaView style={{flex: 1}} className='bg-blue-400'>
+          <View className='flex-row items-center justify-center'>
             <TouchableOpacity onPress={() => setPage(page - 1)} disabled={page === 1} className='bg-white p-1 text-center'>
               <Text className='text-lg'> {"<"}  </Text>
             </TouchableOpacity>
@@ -47,8 +46,7 @@ const HomeScreen = () => {
               location={item.location.name}
             />
           </View>   
-      )}/>
-        </View>     
+      )}/>    
     </SafeAreaView>
     </GestureHandlerRootView>
   );

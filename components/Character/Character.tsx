@@ -1,5 +1,5 @@
 import { View, Image, Text } from "react-native"
-import { CharacterCard, CharacterModel } from "@/models/CharacterTypes";
+import { CharacterCard } from "@/models/CharacterTypes";
 
 const Character: React.FC<CharacterCard> = ({id, image, name, species, location, status, gender}) => {
     return (

@@ -2,7 +2,7 @@ import { View, Image, Text } from "react-native"
 import { CharacterCard } from "@/models/CharacterTypes";
 import { Link } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import useHandleFavs from "@/handlers/useHandleFavs";
+import useHandleFavs from "@/handlers/useAddFavorite";
 import AntDesign from "@expo/vector-icons/build/AntDesign";
 
 const CharacterList: React.FC<CharacterCard> = ({id, image, name, species, status, location, gender}) => {

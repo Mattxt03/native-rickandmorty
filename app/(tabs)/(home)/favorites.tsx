@@ -1,31 +1,25 @@
-import FavCharacterList from "@/components/FavCharacters/FavCharacterList";
-import { removeFavoriteChar } from "@/redux/favoritesSlice";
+import FavCharacterList from "@/components/FavCharacter/FavCharacterList";
 import { State } from "@/redux/store";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
 import { FlatList, GestureHandlerRootView } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const FavoritesScreen = () => {
 
-    const dispatch = useDispatch();
-
     const favoriteCharacters = useSelector((state: State) => state.favorites.characters);
 
     if(favoriteCharacters.length === 0) return (
-        <SafeAreaView>
-            <Text className="text-4xl mx-4 mt-4"> No favorites, go add one! </Text>
+        <SafeAreaView className="items-center">
+            <Text className="text-xl mx-4 mt-4"> No favorites, go add one! </Text>
         </SafeAreaView>
     )
 
-    const handleRemoveFavChar = (id: number) => {
-        dispatch(removeFavoriteChar(id));
-    };
-
     return (
         <GestureHandlerRootView>
-            <SafeAreaView style={{flex: 1}}>
-                <FlatList 
+            <SafeAreaView style={{flex: 1}} className="bg-blue-400">
+                <View>
+                    <FlatList 
                     data={favoriteCharacters} 
                     keyExtractor={item => item.id.toString()}
                     renderItem={({ item }) => (
@@ -40,7 +34,9 @@ const FavoritesScreen = () => {
                             location={item.location}
                         />
                     </View>           
-                )}/>
+                    )}/>
+                </View>
+                
             </SafeAreaView>
         </GestureHandlerRootView>
     )
